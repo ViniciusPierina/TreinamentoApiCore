@@ -35,7 +35,8 @@ namespace Infrastructure.Repositories
         public void Remove(Guid id)
         {
             var t = Find(id);
-            _context.Set<T>().Remove(t);
+            t.Deleted = true;
+            _context.Set<T>().Update(t);
             _context.SaveChanges();
         }
 

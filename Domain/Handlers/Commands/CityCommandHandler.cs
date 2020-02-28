@@ -3,6 +3,7 @@ using Core.CQRS;
 using Domain.Commands;
 using Domain.Interfaces;
 using Domain.Models;
+using System;
 
 namespace Domain.Handlers.Commands
 {
@@ -24,6 +25,7 @@ namespace Domain.Handlers.Commands
             if(Message != null)
             {
                 var city = _mapper.Map<City>(Message);
+                city.CreationDate = DateTime.Now;
                 _repository.Add(city);
             }
         }
