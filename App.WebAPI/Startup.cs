@@ -34,6 +34,8 @@ namespace App.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IGameService, GameService>();
 
@@ -88,7 +90,7 @@ namespace App.WebAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
 
@@ -118,6 +120,7 @@ namespace App.WebAPI
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestNetCore");
+                c.RoutePrefix = string.Empty;
             });
         }
     }

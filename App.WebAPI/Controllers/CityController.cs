@@ -19,17 +19,17 @@ namespace App.WebAPI.Controllers
             _cityService = cityService;
         }
 
+        [HttpGet]
+        public ActionResult<List<CityDTO>> GetAll()
+        {
+            return Ok(_cityService.GetAll());
+        }
+
         [HttpGet("{id}")]
         public ActionResult<CityDTO> GetById(Guid id)
         {
             var city = _cityService.Get(id);
             return Ok(city);
-        }
-
-        [HttpGet]
-        public ActionResult<List<CityDTO>> GetAll()
-        {
-            return Ok(_cityService.GetAll());
         }
 
         [HttpPost]

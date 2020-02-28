@@ -89,6 +89,7 @@ namespace App.WebAPI.Controllers
             }
         }
 
+        [HttpGet("ReleaseYear")]
         public ActionResult<IEnumerable<GameDTO>> FindGameByReleaseYear(int year)
         {
             return Ok(_gameService.FindGameByReleaseYear(year));
