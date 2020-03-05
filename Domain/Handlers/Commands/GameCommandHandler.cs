@@ -3,7 +3,7 @@ using Core.CQRS;
 using Domain.Commands;
 using Domain.Interfaces;
 using Domain.Models;
-using System.Collections.Generic;
+using System;
 
 namespace Domain.Handlers.Commands
 {
@@ -24,6 +24,7 @@ namespace Domain.Handlers.Commands
             if (Message != null)
             {
                 var game = _mapper.Map<Game>(Message);
+                game.CreationDate = DateTime.Now;
                 _gameRepository.Add(game);
             }
         }
