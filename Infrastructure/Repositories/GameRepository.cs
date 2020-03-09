@@ -1,6 +1,7 @@
 ﻿using Domain.Interfaces;
 using Domain.Models;
 using Infrastructure.Configurations;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +14,11 @@ namespace Infrastructure.Repositories
         public GameRepository(ConfigurationContext context) : base(context)
         {
             configurationContext = context;
+        }
+
+        public IEnumerable<Game> FindAllGames()
+        {
+            return configurationContext.Set<Game>().Where(t => !t.Deleted).Include(g => g.City).ToList();
         }
 
         public IEnumerable<Game> FindGameByReleaseYear(int year)

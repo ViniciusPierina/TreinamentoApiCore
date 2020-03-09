@@ -20,9 +20,9 @@ namespace App.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<GameDTO>> GetAll()
+        public ActionResult<IEnumerable<GameDTO>> FindGames()
         {
-            return Ok(_gameService.GetAll());
+            return Ok(_gameService.FindGames());
         }
 
         [HttpGet("{id}")]

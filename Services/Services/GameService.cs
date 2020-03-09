@@ -39,6 +39,17 @@ namespace Services.Services
             return entityDTOList;
         }
 
+        public IEnumerable<GameDTO> FindGames()
+        {
+            IEnumerable<Game> entityList = _repository.FindAllGames();
+            List<GameDTO> entityDTOList = new List<GameDTO>();
+            foreach (Game entity in entityList)
+            {
+                entityDTOList.Add(_mapper.Map<GameDTO>(entity));
+            }
+            return entityDTOList;
+        }
+
         public GameDTO Get(Guid id)
         {
             var model = _repository.Find(id);

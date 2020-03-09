@@ -12,5 +12,6 @@ namespace Services.Services.Interfaces
         GameDTO Get(Guid Id);
         IEnumerable<GameDTO> GetAll();
         IEnumerable<GameDTO> FindGameByReleaseYear(int year);
+        IEnumerable<GameDTO> FindGames();
     }
 }
